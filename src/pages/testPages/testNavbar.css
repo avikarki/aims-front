@@ -1,0 +1,30 @@
+/* Vertical first level menu styles */
+.vh-100 {
+  min-height: 100vh;
+}
+
+/* Horizontal submenu styles */
+.navbar-nav.flex-row .nav-item {
+  padding: 0.5rem 1rem;
+}
+
+/* Dropdown menu positioning for horizontal nav */
+.navbar-nav.flex-row .dropdown-menu {
+  position: absolute;
+}
+
+/* Ensure proper spacing */
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+/* Highlight active menu */
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+/* Smooth transitions */
+.dropdown-menu {
+  transition: all 0.3s ease;
+}
