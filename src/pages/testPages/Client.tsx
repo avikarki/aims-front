@@ -29,6 +29,7 @@ import {
 import { Form } from "react-bootstrap";
 import { useShortcuts } from "../../hooks/useShortcutKeys";
 import { shortcutKeys } from "../../shortcutKeys";
+import StyledShortcutKeyTitle from "../../components/StyledShortcutKeyTitle";
 
 interface TablePaginationActionsProps {
   count: number;
@@ -231,7 +232,12 @@ const Client = () => {
           color="success"
           onClick={openModal}
         >
-          Add Client
+          {/* Add Client */}
+          <StyledShortcutKeyTitle
+            title="Add Client"
+            id="client_add"
+            shortcutKeys={shortcutKeys}
+          />
         </Button>
       </Stack>
       {users?.length > 0 ? (
@@ -285,7 +291,11 @@ const Client = () => {
                       color="info"
                       onClick={() => editUser(user)}
                     >
-                      Edit
+                      <StyledShortcutKeyTitle
+                        title="Edit"
+                        id="client_edit"
+                        shortcutKeys={shortcutKeys}
+                      />
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -347,9 +357,7 @@ const Client = () => {
           No Clients Added!
         </Box>
       )}
-      <p className="mt-3 text-danger">
-        Press 'Alt + A' to add and 'Alt + U' to edit.
-      </p>
+
       <ClientModal
         userEditId={userEditId}
         isModalOpen={isModalOpen}

@@ -5,7 +5,7 @@ import TestModal1 from "./TestModal1";
 import TestModal3 from "./TestModal3";
 import { shortcutKeys } from "../../shortcutKeys";
 import { useShortcuts } from "../../hooks/useShortcutKeys";
-import { findShortcutById, stylizeTitle } from "../../utils/stylizeTitle";
+import StyledShortcutKeyTitle from "../../components/StyledShortcutKeyTitle";
 
 type MenuProps = {
   id: string;
@@ -145,12 +145,13 @@ const HomePage = () => {
           <h1>Home Page</h1>
           <ListGroup>
             {menus.map(({ id, title, path }) => {
-              const shortcut = findShortcutById(id, shortcutKeys);
-              const styledTitle = stylizeTitle(title, shortcut);
-
               return (
                 <ListGroup.Item key={id} action as={Link} to={path} id={id}>
-                  {styledTitle}
+                  <StyledShortcutKeyTitle
+                    title={title}
+                    id={id}
+                    shortcutKeys={shortcutKeys}
+                  />
                 </ListGroup.Item>
               );
             })}
@@ -160,7 +161,11 @@ const HomePage = () => {
             above.
           </p>
           <Button id="modal1" variant="secondary" onClick={openModal}>
-            {stylizeTitle("Modal 1", findShortcutById("modal1", shortcutKeys))}
+            <StyledShortcutKeyTitle
+              title="Modal 1"
+              id="modal1"
+              shortcutKeys={shortcutKeys}
+            />
           </Button>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
@@ -189,7 +194,11 @@ const HomePage = () => {
             necessitatibus temporibus nihil tenetur qui libero.
           </p>
           <Button id="modal3" variant="secondary" onClick={handleModal3}>
-            {stylizeTitle("Modal 3", findShortcutById("modal3", shortcutKeys))}
+            <StyledShortcutKeyTitle
+              title="Modal 3"
+              id="modal3"
+              shortcutKeys={shortcutKeys}
+            />
           </Button>
           <TestModal1
             isModalOpen={isModalOpen}

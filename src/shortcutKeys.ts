@@ -203,7 +203,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
         ctrlKey: false,
         // metaKey: true,
         shiftKey: false,
-        key: "KeyU",
+        key: "KeyE",
       },
     ],
   },

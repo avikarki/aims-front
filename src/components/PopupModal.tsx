@@ -2,6 +2,7 @@ import { Button, Modal } from "react-bootstrap";
 import type { PopupProps } from "../types";
 import { shortcutKeys } from "../shortcutKeys";
 import { useShortcuts } from "../hooks/useShortcutKeys";
+import StyledShortcutKeyTitle from "./StyledShortcutKeyTitle";
 
 const PopupModal = ({
   open,
@@ -32,10 +33,14 @@ const PopupModal = ({
       {buttonRequired && (
         <Modal.Footer>
           <Button id="submit_button" onClick={submitForm}>
-            Save
+            <StyledShortcutKeyTitle
+              title="Save"
+              id="submit_button"
+              shortcutKeys={shortcutKeys}
+            />
           </Button>
           <Button variant="secondary" onClick={onClose}>
-            Close
+            Close <StyledShortcutKeyTitle title="Esc" />
           </Button>
         </Modal.Footer>
       )}
