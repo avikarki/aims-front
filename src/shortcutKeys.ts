@@ -47,6 +47,26 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     // metaKey: false,
     shiftKey: false,
     key: "KeyT",
+    subKeys: [
+      {
+        // Alt + C Key
+        id: "calculator",
+        altKey: true,
+        ctrlKey: false,
+        // metaKey: false,
+        shiftKey: false,
+        key: "KeyC",
+      },
+      {
+        // Alt + A Key
+        id: "toggleModal_back",
+        altKey: false,
+        ctrlKey: false,
+        // metaKey: true,
+        shiftKey: false,
+        key: "Enter",
+      },
+    ],
   },
   {
     // A Key
@@ -79,9 +99,9 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     // Shift + M Key
     id: "modal1",
     altKey: false,
-    ctrlKey: false,
+    ctrlKey: true,
     // metaKey: false,
-    shiftKey: true,
+    shiftKey: false,
     key: "KeyM",
   },
   {

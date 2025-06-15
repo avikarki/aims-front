@@ -192,7 +192,7 @@ interface CalculatorProps {
   item: string;
   setItem: (item: string) => void;
   setIsCalculatorActive: (active: boolean) => void;
-  setShowModal: (show: boolean) => void;
+  setShowModal?: (show: boolean) => void;
 }
 
 const Calculator = ({
@@ -275,6 +275,8 @@ const Calculator = ({
       [item]: input ? evaluate(input).toFixed(2).toString() : "0",
     });
     handleClose();
+    // Only for Model over Modal or toggle Modal page
+    (document.getElementById("toggleModal_back") as HTMLButtonElement).click();
   };
 
   const handleClose = () => {
@@ -283,7 +285,7 @@ const Calculator = ({
     setItem("");
     setCalculated(false);
     setIsCalculatorActive(true);
-    setShowModal(false);
+    setShowModal && setShowModal(false);
   };
 
   const handleCancel = () => {
@@ -292,7 +294,7 @@ const Calculator = ({
     setItem("");
     setCalculated(false);
     setIsCalculatorActive(true);
-    setShowModal(false);
+    setShowModal && setShowModal(false);
   };
 
   useCalculatorShortcutKeys(

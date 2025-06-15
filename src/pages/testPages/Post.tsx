@@ -156,12 +156,12 @@ const Post = () => {
     setPostEditId(null);
     reset();
   };
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  // const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setPostEditId(null);
-    setIsChecked(false);
+    // setIsChecked(false);
     reset();
   };
 
@@ -173,13 +173,24 @@ const Post = () => {
     // setValue("isActive", post?.isActive);
   };
 
-  const handleClientCheck = (e: any, post: any) => {
-    setIsChecked(e.target.checked);
-    if (e.target.checked) {
-      setPostEditId(post?.id);
-      setValue("title", post?.title);
-      setValue("body", post?.body);
-      // setValue("isActive", post?.isActive);
+  //   const handleClientCheck = (e: any, post: any) => {
+  //   setIsChecked(e.target.checked);
+  //   if (e.target.checked) {
+  //     setPostEditId(post?.id);
+  //     setValue("title", post?.title);
+  //     setValue("body", post?.body);
+  //     // setValue("isActive", post?.isActive);
+  //   }
+  // };
+
+  const handleRowCheck = (post: any) => {
+    if (postEditId === post.id) {
+      setPostEditId(null);
+      reset();
+    } else {
+      setPostEditId(post.id);
+      setValue("title", post.title);
+      setValue("body", post.body);
     }
   };
 
@@ -187,7 +198,7 @@ const Post = () => {
     post_add: () => {
       setIsModalOpen(true);
       setPostEditId(null);
-      setIsChecked(false);
+      // setIsChecked(false);
     },
     post_edit: () => {
       if (postEditId) {
@@ -271,15 +282,35 @@ const Post = () => {
                   )
                 : posts
               ).map((post, index) => (
-                <TableRow key={index}>
+                <TableRow
+                  aria-selected={postEditId === post.id}
+                  key={index}
+                  sx={{
+                    backgroundColor:
+                      postEditId === post.id ? `rgba(0, 0, 0, 0.1)` : "inherit",
+                    cursor: "pointer",
+                    "&:hover": {
+                      backgroundColor: "action.hover",
+                    },
+                    transition: "background-color 0.25s ease",
+                  }}
+                  onClick={() => handleRowCheck(post)}
+                >
                   <TableCell>
                     <Form.Check
+                      type="checkbox"
+                      // checked={field.value}
+                      checked={postEditId === post.id}
+                      onChange={() => handleRowCheck(post)}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    {/* <Form.Check
                       disabled={isChecked && postEditId !== post?.id}
                       type="checkbox"
                       checked={isChecked && postEditId === post?.id}
                       onChange={(e) => handleClientCheck(e, post)}
                       // checked={field.value}
-                    />
+                    /> */}
                   </TableCell>
                   <TableCell>{post?.title}</TableCell>
                   <TableCell>{post?.body}</TableCell>
@@ -291,7 +322,10 @@ const Post = () => {
                       size="small"
                       variant="contained"
                       color="info"
-                      onClick={() => editPost(post)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        editPost(post);
+                      }}
                     >
                       <StyledShortcutKeyTitle
                         title="Edit"

@@ -289,7 +289,7 @@ const CalculatorScreen = () => {
   const shortcutHandlers = {
     calculator: () =>
       isCalculatorActive &&
-      (document.getElementById("calculator") as HTMLInputElement).click(),
+      (document.getElementById("calculator") as HTMLElement).click(),
     // ... other handlers
   };
 

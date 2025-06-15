@@ -45,11 +45,15 @@ const PostModal = <T extends FieldValues>({
   // )?.ctrlKey;
 
   const submitForm = async (data: any) => {
-    // if (postEditId) {
-    //   dispatch(editUser({ ...data, id: postEditId }));
-    // } else {
+    // Show confirmation dialog
+    const isConfirmed = window.confirm(
+      `Are you sure you want to ${postEditId ? "update" : "create"} this post?`
+    ); // Use react-confirm-alert if you want to edit OK or Cancel buttons
 
-    // }
+    if (!isConfirmed) {
+      return; // If user clicks "No", do nothing (stay on modal)
+    }
+
     try {
       if (postEditId) {
         await updatePost({ ...data, id: postEditId }).unwrap();
@@ -58,11 +62,24 @@ const PostModal = <T extends FieldValues>({
         await createPost(data).unwrap();
         alert("Post created successfully!");
       }
+      onClose();
     } catch (err) {
       alert(postEditId ? "Failed to update post:" : "Failed to create post:");
     }
 
-    onClose();
+    // try {
+    //   if (postEditId) {
+    //     await updatePost({ ...data, id: postEditId }).unwrap();
+    //     alert("Post updated successfully!");
+    //   } else {
+    //     await createPost(data).unwrap();
+    //     alert("Post created successfully!");
+    //   }
+    // } catch (err) {
+    //   alert(postEditId ? "Failed to update post:" : "Failed to create post:");
+    // }
+
+    // onClose();
   };
 
   const { handleKeyDown } = useEnterToSwitchInputs();
