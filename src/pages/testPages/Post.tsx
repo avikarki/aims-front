@@ -17,8 +17,6 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import ClientModal from "./ClientModal";
-import { useAppSelector } from "../../app/hooks";
 import { useForm } from "react-hook-form";
 import {
   FirstPage,
@@ -30,6 +28,8 @@ import { Form } from "react-bootstrap";
 import { useShortcuts } from "../../hooks/useShortcutKeys";
 import { shortcutKeys } from "../../shortcutKeys";
 import StyledShortcutKeyTitle from "../../components/StyledShortcutKeyTitle";
+import { useGetPostsQuery } from "../../features/post/postsApi";
+import PostModal from "./PostModal";
 
 interface TablePaginationActionsProps {
   count: number;
@@ -112,29 +112,30 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
 }
 
 interface FormData {
-  name: string;
-  contact: string;
-  isActive: boolean;
+  title: string;
+  body: string;
+  // isActive: boolean;
 }
 
-const Client = () => {
+const Post = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const { control, handleSubmit, setValue, reset } = useForm<FormData>({
     defaultValues: {
-      name: "",
-      contact: "",
-      isActive: true,
+      title: "",
+      body: "",
+      // isActive: true,
     },
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userEditId, setUserEditId] = useState("");
-  const users = useAppSelector((state) => state.user);
+  const [postEditId, setPostEditId] = useState<number | null>(null);
+
+  const { data: posts = [] } = useGetPostsQuery();
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - users.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - posts.length) : 0;
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement> | null,
@@ -152,62 +153,62 @@ const Client = () => {
 
   const openModal = () => {
     setIsModalOpen(true);
-    setUserEditId("");
+    setPostEditId(null);
     reset();
   };
-  const [isChecked, setIsChecked] = useState<any>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setUserEditId("");
+    setPostEditId(null);
     setIsChecked(false);
     reset();
   };
 
-  const editUser = (user: any) => {
+  const editPost = (post: any) => {
     setIsModalOpen(true);
-    setUserEditId(user?.id);
-    setValue("name", user?.name);
-    setValue("contact", user?.contact);
-    setValue("isActive", user?.isActive);
+    setPostEditId(post?.id);
+    setValue("title", post?.title);
+    setValue("body", post?.body);
+    // setValue("isActive", post?.isActive);
   };
 
-  const handleClientCheck = (e: any, user: any) => {
+  const handleClientCheck = (e: any, post: any) => {
     setIsChecked(e.target.checked);
     if (e.target.checked) {
-      setUserEditId(user?.id);
-      setValue("name", user?.name);
-      setValue("contact", user?.contact);
-      setValue("isActive", user?.isActive);
+      setPostEditId(post?.id);
+      setValue("title", post?.title);
+      setValue("body", post?.body);
+      // setValue("isActive", post?.isActive);
     }
   };
 
   const shortcutHandlers = {
-    client_add: () => {
+    post_add: () => {
       setIsModalOpen(true);
-      setUserEditId("");
+      setPostEditId(null);
       setIsChecked(false);
     },
-    client_edit: () => {
-      if (userEditId) {
+    post_edit: () => {
+      if (postEditId) {
         setIsModalOpen(true);
       }
     },
     // ... other handlers
   };
 
-  const clientKeys: any = shortcutKeys?.find(
-    (key) => key?.id === "client"
+  const postKeys: any = shortcutKeys?.find(
+    (key) => key?.id === "post"
   )?.subKeys;
 
   // Activate shortcuts
-  useShortcuts(clientKeys, shortcutHandlers);
+  useShortcuts(postKeys, shortcutHandlers);
 
   // useShortcutKeys(
   //   (event: KeyboardEvent) => {
   //     if (event.altKey && event.code === "KeyA") {
   //       setIsModalOpen(true);
-  //       setUserEditId("");
+  //       setPostEditId(null);
   //       setIsChecked(false);
   //       reset();
   //     } else if (event.altKey && event.code === "KeyU" && userEditId) {
@@ -225,22 +226,22 @@ const Client = () => {
         alignItems="center"
         justifyContent="space-between"
       >
-        <Typography variant="h4">Clients</Typography>
+        <Typography variant="h4">Posts</Typography>
         <Button
-          id="client_add"
+          id="post_add"
           variant="contained"
           color="success"
           onClick={openModal}
         >
           {/* Add Client */}
           <StyledShortcutKeyTitle
-            title="Add Client"
-            id="client_add"
+            title="Add Post"
+            id="post_add"
             shortcutKeys={shortcutKeys}
           />
         </Button>
       </Stack>
-      {users?.length > 0 ? (
+      {posts?.length > 0 ? (
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -249,13 +250,13 @@ const Client = () => {
                   <strong>Select</strong>
                 </TableCell>
                 <TableCell>
-                  <strong>Name</strong>
+                  <strong>Title</strong>
                 </TableCell>
                 <TableCell>
-                  <strong>Contact</strong>
+                  <strong>Body</strong>
                 </TableCell>
                 <TableCell>
-                  <strong>Active?</strong>
+                  <strong>UserID</strong>
                 </TableCell>
                 <TableCell align="right">
                   <strong>Action</strong>
@@ -264,36 +265,37 @@ const Client = () => {
             </TableHead>
             <TableBody>
               {(rowsPerPage > 0
-                ? users.slice(
+                ? posts.slice(
                     page * rowsPerPage,
                     page * rowsPerPage + rowsPerPage
                   )
-                : users
-              ).map((user, index) => (
+                : posts
+              ).map((post, index) => (
                 <TableRow key={index}>
                   <TableCell>
                     <Form.Check
-                      disabled={isChecked && userEditId !== user?.id}
+                      disabled={isChecked && postEditId !== post?.id}
                       type="checkbox"
-                      checked={isChecked && userEditId === user?.id}
-                      onChange={(e) => handleClientCheck(e, user)}
+                      checked={isChecked && postEditId === post?.id}
+                      onChange={(e) => handleClientCheck(e, post)}
                       // checked={field.value}
                     />
                   </TableCell>
-                  <TableCell>{user?.name}</TableCell>
-                  <TableCell>{user.contact}</TableCell>
-                  <TableCell>{user.isActive ? "Yes" : "No"}</TableCell>
+                  <TableCell>{post?.title}</TableCell>
+                  <TableCell>{post?.body}</TableCell>
+                  <TableCell>{post?.userId}</TableCell>
+                  {/* <TableCell>{post.isActive ? "Yes" : "No"}</TableCell> */}
                   <TableCell align="right">
                     <Button
-                      id="client_edit"
+                      id="post_edit"
                       size="small"
                       variant="contained"
                       color="info"
-                      onClick={() => editUser(user)}
+                      onClick={() => editPost(post)}
                     >
                       <StyledShortcutKeyTitle
                         title="Edit"
-                        id="client_edit"
+                        id="post_edit"
                         shortcutKeys={shortcutKeys}
                       />
                     </Button>
@@ -327,7 +329,7 @@ const Client = () => {
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
                   colSpan={5}
-                  count={users.length}
+                  count={posts?.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   slotProps={{
@@ -354,12 +356,12 @@ const Client = () => {
           justifyContent="center"
           py={5}
         >
-          No Clients Added!
+          No Posts Added!
         </Box>
       )}
 
-      <ClientModal
-        userEditId={userEditId}
+      <PostModal
+        postEditId={postEditId}
         isModalOpen={isModalOpen}
         onClose={handleCloseModal}
         control={control}
@@ -369,4 +371,4 @@ const Client = () => {
   );
 };
 
-export default Client;
+export default Post;

@@ -14,6 +14,8 @@ const TextField = <T extends FieldValues>({
   readOnly = false,
   disabled = false,
   autoFocus = false,
+  as,
+  rows,
 }: TextFieldProps<T>) => {
   return (
     <Form.Group className="mb-3" controlId={name}>
@@ -29,6 +31,8 @@ const TextField = <T extends FieldValues>({
               readOnly={readOnly}
               type={type}
               placeholder={placeholder}
+              as={as}
+              rows={rows}
               required={required}
               autoFocus={autoFocus}
               {...field}

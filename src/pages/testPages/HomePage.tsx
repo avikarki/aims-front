@@ -15,9 +15,9 @@ type MenuProps = {
 
 const menus: MenuProps[] = [
   {
-    id: "client",
-    title: "Client",
-    path: "/demo/client",
+    id: "post",
+    title: "Posts",
+    path: "/demo/post",
   },
   {
     id: "toggleModal",
@@ -112,7 +112,7 @@ const HomePage = () => {
   const shortcutHandlers = {
     search: () =>
       (document.getElementById("search") as HTMLInputElement).focus(),
-    client: () => (document.getElementById("client") as HTMLElement).click(),
+    post: () => (document.getElementById("post") as HTMLElement).click(),
     toggleModal: () =>
       (document.getElementById("toggleModal") as HTMLElement).click(),
     calculator: () =>

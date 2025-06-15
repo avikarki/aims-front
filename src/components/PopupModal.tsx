@@ -3,6 +3,7 @@ import type { PopupProps } from "../types";
 import { shortcutKeys } from "../shortcutKeys";
 import { useShortcuts } from "../hooks/useShortcutKeys";
 import StyledShortcutKeyTitle from "./StyledShortcutKeyTitle";
+import Loader from "./Loader";
 
 const PopupModal = ({
   open,
@@ -12,6 +13,7 @@ const PopupModal = ({
   buttonRequired = false,
   submitForm,
   size,
+  loading,
 }: PopupProps) => {
   const shortcutHandlers = {
     submit_button: () =>
@@ -33,11 +35,23 @@ const PopupModal = ({
       {buttonRequired && (
         <Modal.Footer>
           <Button id="submit_button" onClick={submitForm}>
-            <StyledShortcutKeyTitle
-              title="Save"
-              id="submit_button"
-              shortcutKeys={shortcutKeys}
-            />
+            {loading ? (
+              <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
+                <Loader
+                  variant="light"
+                  height="20px"
+                  width="20px"
+                  borderWidth="2px"
+                />{" "}
+                Saving...
+              </div>
+            ) : (
+              <StyledShortcutKeyTitle
+                title="Save"
+                id="submit_button"
+                shortcutKeys={shortcutKeys}
+              />
+            )}
           </Button>
           <Button variant="secondary" onClick={onClose}>
             Close <StyledShortcutKeyTitle title="Esc" />

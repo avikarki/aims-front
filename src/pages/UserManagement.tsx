@@ -8,7 +8,7 @@ export default function UserManagement() {
     password: "",
     userGroupId: "",
   });
-  const [userGroupId, setSelectedGroup] = useState("");
+  const [userGroupId] = useState("");
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {

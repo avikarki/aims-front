@@ -11,13 +11,13 @@ const RoleGroups = lazy(() => import("../pages/RoleGroups"));
 const Signup = lazy(() => import("../pages/auth/Signup"));
 const HomePage = lazy(() => import("../pages/testPages/HomePage"));
 // const Page2 = lazy(() => import("../pages/testPages/Page2"));
-const Client = lazy(() => import("../pages/testPages/Client"));
+const Post = lazy(() => import("../pages/testPages/Post"));
 const EmiCalculator = lazy(() => import("../pages/EmiCalculator"));
 // const BilingualDateField = lazy(
 //   () => import("../components/bilingualdate/BilingualDateField")
 // );
 const CalculatorScreen = lazy(() => import("../components/CalculatorScreen"));
-// const Page1 = lazy(() => import("../pages/testPages/Client"));
+// const Page1 = lazy(() => import("../pages/testPages/Post"));
 const BilingualDatePicker = lazy(
   () => import("../components/BilingualDatePicker")
 );
@@ -95,9 +95,9 @@ const router = createBrowserRouter([
     loader: () => setTitle("HomePage"),
   },
   {
-    path: "/demo/client",
-    element: <Client />,
-    loader: () => setTitle("Client"),
+    path: "/demo/post",
+    element: <Post />,
+    loader: () => setTitle("Posts"),
   },
   {
     path: "/demo/toggleModal",

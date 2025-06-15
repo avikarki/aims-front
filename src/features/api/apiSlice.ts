@@ -14,6 +14,6 @@ const baseQuery = fetchBaseQuery({
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery,
-  tagTypes: ["User", "Product", "Order"], // Define tag types for cache invalidation
+  tagTypes: ["Post"], // Define tag types for cache invalidation
   endpoints: () => ({}),
 });

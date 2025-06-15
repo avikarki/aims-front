@@ -9,6 +9,8 @@ export interface BaseFieldProps<T extends FieldValues> {
   disabled?: boolean;
   autoFocus?: boolean;
   tabIndex?: number;
+  as?: any;
+  rows?: number;
 }
 
 export interface PasswordFieldProps<T extends FieldValues>

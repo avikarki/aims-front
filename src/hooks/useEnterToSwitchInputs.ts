@@ -3,7 +3,9 @@ export const useEnterToSwitchInputs = () => {
     if (e.key === "Enter") {
       e.preventDefault();
       const form = e.currentTarget;
-      const inputs: any = Array.from(form.querySelectorAll("input"));
+      const inputs: any = Array.from(
+        form.querySelectorAll("input") && form.querySelectorAll("textarea")
+      );
       const currentIndex = inputs.indexOf(document.activeElement);
 
       if (currentIndex < inputs.length - 1) {

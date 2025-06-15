@@ -3,28 +3,34 @@ import { Form } from "react-bootstrap";
 import PopupModal from "../../components/PopupModal";
 import TextField from "../../components/TextField";
 import type { FieldValues, UseFormHandleSubmit } from "react-hook-form";
-import { useAppDispatch } from "../../app/hooks";
-import { addUser, editUser } from "../../features/user/usersSlice";
-import CheckboxField from "../../components/CheckboxField";
+// import { useAppDispatch } from "../../app/hooks";
+// import { addUser, editUser } from "../../features/post/usersSlice";
+// import CheckboxField from "../../components/CheckboxField";
 import { useEnterToSwitchInputs } from "../../hooks/useEnterToSwitchInputs";
+import {
+  useCreatePostMutation,
+  useUpdatePostMutation,
+} from "../../features/post/postsApi";
 
 interface ModalProps<T extends FieldValues> {
   control: any;
   handleSubmit: UseFormHandleSubmit<T>;
   isModalOpen: boolean;
   onClose: () => void;
-  userEditId: string;
+  postEditId: number | null;
 }
 
-const ClientModal = <T extends FieldValues>({
+const PostModal = <T extends FieldValues>({
   isModalOpen,
   onClose,
   control,
   handleSubmit,
-  userEditId,
+  postEditId,
 }: ModalProps<T>) => {
-  const dispatch = useAppDispatch();
-  const { handleKeyDown } = useEnterToSwitchInputs();
+  // const dispatch = useAppDispatch();
+
+  const [createPost, { isLoading: creating }] = useCreatePostMutation();
+  const [updatePost, { isLoading: updating }] = useUpdatePostMutation();
 
   // const buttonKey = shortcutKeys2?.homepage?.popupKeys?.find(
   //   (popup: PopupKeysProps) => popup?.openKey === openKey
@@ -38,14 +44,28 @@ const ClientModal = <T extends FieldValues>({
   //   (popup: PopupKeysProps) => popup?.openKey === openKey
   // )?.ctrlKey;
 
-  const submitForm = (data: any) => {
-    if (userEditId) {
-      dispatch(editUser({ ...data, id: userEditId }));
-    } else {
-      dispatch(addUser(data));
+  const submitForm = async (data: any) => {
+    // if (postEditId) {
+    //   dispatch(editUser({ ...data, id: postEditId }));
+    // } else {
+
+    // }
+    try {
+      if (postEditId) {
+        await updatePost({ ...data, id: postEditId }).unwrap();
+        alert("Post updated successfully!");
+      } else {
+        await createPost(data).unwrap();
+        alert("Post created successfully!");
+      }
+    } catch (err) {
+      alert(postEditId ? "Failed to update post:" : "Failed to create post:");
     }
+
     onClose();
   };
+
+  const { handleKeyDown } = useEnterToSwitchInputs();
 
   // Performs the functions when pressing keyboard keys
   //   useShortcutKeys(
@@ -82,18 +102,19 @@ const ClientModal = <T extends FieldValues>({
     <PopupModal
       open={isModalOpen}
       onClose={onClose}
-      title={userEditId ? "Edit Client" : "Add Client"}
+      title={postEditId ? "Edit Client" : "Add Client"}
       buttonRequired
       submitForm={handleSubmit(submitForm)}
+      loading={postEditId ? updating : creating}
     >
       <Form noValidate className="form-horizontal" onKeyDown={handleKeyDown}>
         <TextField
           tabIndex={0}
           type="text"
-          name="name"
+          name="title"
           control={control}
-          label="Name"
-          placeholder="Enter Name"
+          label="Title"
+          placeholder="Enter Title"
           autoFocus
           required
         />
@@ -101,14 +122,16 @@ const ClientModal = <T extends FieldValues>({
         <TextField
           tabIndex={1}
           type="text"
-          name="contact"
-          label="Contact"
+          name="body"
+          label="Body"
           control={control}
-          placeholder="Enter Contact"
+          placeholder="Enter Body"
           required
+          as="textarea"
+          rows={3}
         />
 
-        {userEditId && (
+        {/* {postEditId && (
           <CheckboxField
             tabIndex={3}
             name="isActive"
@@ -116,10 +139,10 @@ const ClientModal = <T extends FieldValues>({
             label="isActive?"
             required
           />
-        )}
+        )} */}
       </Form>
     </PopupModal>
   );
 };
 
-export default ClientModal;
+export default PostModal;

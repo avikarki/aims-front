@@ -8,4 +8,5 @@ export type PopupProps = {
   buttonRequired?: boolean;
   submitForm?: () => void;
   size?: "sm" | "lg" | "xl" | undefined;
+  loading?: boolean;
 };

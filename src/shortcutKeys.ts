@@ -1,179 +1,8 @@
-// export const shortcutKeys = [
-//   "KeyA",
-//   "KeyB",
-//   "KeyC",
-//   "KeyD",
-//   "KeyE",
-//   "KeyF",
-//   "KeyG",
-//   "KeyH",
-//   "KeyI",
-//   "KeyJ",
-//   "KeyK",
-//   "KeyL",
-// ];
-
 import type { ShortcutKeysProps } from "./types";
-
-// export const shortcutKeys: ShortcutKeysProps = {
-// export const shortcutKeys = {
-//   homepage: {
-//     keys: [
-//       {
-//         id: "client",
-//         altKey: true,
-//         ctrlKey: false,
-//         key: "KeyA",
-//       },
-//       {
-//         id: "toggle",
-//         key: "KeyB",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "calculator",
-//         altKey: true,
-//         ctrlKey: false,
-//         key: "KeyC",
-//       },
-//       {
-//         id: "datePicker",
-//         key: "KeyD",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "emi",
-//         key: "KeyE",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "modal1",
-//         key: "KeyE",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "modal2",
-//         key: "KeyE",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "modal3",
-//         key: "KeyE",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//     ],
-//     popupKeys: [
-//       {
-//         openKey: "KeyF",
-//         altKey: true,
-//         ctrlKey: false,
-//         buttonKey: "KeyS",
-//         component: TestModal1,
-//       },
-//       {
-//         openKey: "KeyG",
-//         altKey: true,
-//         ctrlKey: false,
-//         buttonKey: "KeyT",
-//         component: TestModal2,
-//       },
-//       {
-//         openKey: "KeyH",
-//         altKey: false,
-//         ctrlKey: false,
-//         buttonKey: "KeyR",
-//         component: TestModal3,
-//       },
-//     ],
-//   },
-// };
-
-// export const shortcutKeys = {
-//   homepage: {
-//     menus: [
-//       {
-//         id: "client",
-//         altKey: true,
-//         ctrlKey: false,
-//         key: "KeyA",
-//       },
-//       {
-//         id: "toggle",
-//         key: "KeyB",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "calculator",
-//         altKey: true,
-//         ctrlKey: false,
-//         key: "KeyC",
-//       },
-//       {
-//         id: "datePicker",
-//         key: "KeyD",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "emi",
-//         key: "KeyE",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "modal1",
-//         key: "KeyE",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "modal2",
-//         key: "KeyE",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//       {
-//         id: "modal3",
-//         key: "KeyE",
-//         altKey: true,
-//         ctrlKey: false,
-//       },
-//     ],
-//     popupKeys: [
-//       {
-//         openKey: "KeyF",
-//         altKey: true,
-//         ctrlKey: false,
-//         buttonKey: "KeyS",
-//         component: TestModal1,
-//       },
-//       {
-//         openKey: "KeyG",
-//         altKey: true,
-//         ctrlKey: false,
-//         buttonKey: "KeyT",
-//         component: TestModal2,
-//       },
-//       {
-//         openKey: "KeyH",
-//         altKey: false,
-//         ctrlKey: false,
-//         buttonKey: "KeyR",
-//         component: TestModal3,
-//       },
-//     ],
-//   },
-// };
 
 export const shortcutKeys: ShortcutKeysProps[] = [
   {
+    // Shift + S Key
     id: "search",
     altKey: false, // Represents option key on macOS
     ctrlKey: false, // Represents control key on macOS
@@ -182,15 +11,17 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     key: "KeyS",
   },
   {
-    id: "client",
+    // C Key
+    id: "post",
     altKey: false,
     ctrlKey: false,
     // metaKey: true,
     shiftKey: false,
-    key: "KeyC",
+    key: "KeyP",
     subKeys: [
       {
-        id: "client_add",
+        // Alt + A Key
+        id: "post_add",
         altKey: true,
         ctrlKey: false,
         // metaKey: true,
@@ -198,7 +29,8 @@ export const shortcutKeys: ShortcutKeysProps[] = [
         key: "KeyA",
       },
       {
-        id: "client_edit",
+        // Alt + E Key
+        id: "post_edit",
         altKey: true,
         ctrlKey: false,
         // metaKey: true,
@@ -208,6 +40,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     ],
   },
   {
+    // T Key
     id: "toggleModal",
     altKey: false,
     ctrlKey: false,
@@ -216,6 +49,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     key: "KeyT",
   },
   {
+    // A Key
     id: "calculator",
     altKey: false,
     ctrlKey: false,
@@ -224,6 +58,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     key: "KeyA",
   },
   {
+    // N Key
     id: "datePicker",
     altKey: false,
     ctrlKey: false,
@@ -232,6 +67,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     key: "KeyN",
   },
   {
+    // E Key
     id: "emiCalculator",
     altKey: false,
     ctrlKey: false,
@@ -240,6 +76,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     key: "KeyE",
   },
   {
+    // Shift + M Key
     id: "modal1",
     altKey: false,
     ctrlKey: false,
@@ -248,6 +85,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     key: "KeyM",
   },
   {
+    // Alt + O Key
     id: "modal3",
     altKey: true,
     ctrlKey: false,
@@ -256,6 +94,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     key: "KeyO",
   },
   {
+    // Alt + S Key
     id: "submit_button",
     altKey: true,
     ctrlKey: false,
@@ -264,6 +103,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     key: "KeyS",
   },
   {
+    // Alt + C Key
     id: "calculator",
     altKey: true,
     ctrlKey: false,
