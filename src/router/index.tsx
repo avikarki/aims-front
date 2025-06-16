@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import ModalOverModal from "../centralizedTest/ModalOverModal";
+import ModalOverModal from "../components/ModalOverModal";
 
 const Login = lazy(() => import("../pages/auth/Login"));
 const Dashboard = lazy(() => import("../pages/Dashboard"));
@@ -9,14 +9,14 @@ const UserManagement = lazy(() => import("../pages/UserManagement"));
 const AssignRoles = lazy(() => import("../pages/AssignRoles"));
 const RoleGroups = lazy(() => import("../pages/RoleGroups"));
 const Signup = lazy(() => import("../pages/auth/Signup"));
-const HomePage = lazy(() => import("../pages/testPages/HomePage"));
+const HomePage = lazy(() => import("../pages/demo/HomePage"));
 // const Page2 = lazy(() => import("../pages/testPages/Page2"));
-const Post = lazy(() => import("../pages/testPages/Post"));
-const EmiCalculator = lazy(() => import("../pages/EmiCalculator"));
+const Post = lazy(() => import("../pages/demo/Post"));
+const EmiCalculator = lazy(() => import("../pages/demo/EmiCalculator"));
 // const BilingualDateField = lazy(
 //   () => import("../components/bilingualdate/BilingualDateField")
 // );
-const CalculatorScreen = lazy(() => import("../components/CalculatorScreen"));
+const CalculatorScreen = lazy(() => import("../pages/demo/CalculatorScreen"));
 // const Page1 = lazy(() => import("../pages/testPages/Post"));
 const BilingualDatePicker = lazy(
   () => import("../components/BilingualDatePicker")

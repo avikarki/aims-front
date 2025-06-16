@@ -1,5 +1,5 @@
 import { Button, Container, Form } from "react-bootstrap";
-import TextField from "../components/TextField";
+import TextField from "../../components/TextField";
 import { useForm } from "react-hook-form";
 
 type EmiData = {

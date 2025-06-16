@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import PopupModal from "../components/PopupModal";
-import Calculator from "../components/Calculator";
+import PopupModal from "./PopupModal";
+import Calculator from "./Calculator";
 import { useShortcuts } from "../hooks/useShortcutKeys";
 import { shortcutKeys } from "../shortcutKeys";
 // import useShortcutKeys from "../hooks/useShortcutKeys";
