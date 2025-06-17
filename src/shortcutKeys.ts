@@ -84,7 +84,7 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     ctrlKey: false,
     // metaKey: false,
     shiftKey: false,
-    key: "KeyN",
+    key: "KeyD",
   },
   {
     // E Key
@@ -130,5 +130,23 @@ export const shortcutKeys: ShortcutKeysProps[] = [
     // metaKey: false,
     shiftKey: false,
     key: "KeyC",
+  },
+  {
+    // Y Key
+    id: "yes",
+    altKey: false,
+    ctrlKey: false,
+    // metaKey: false,
+    shiftKey: false,
+    key: "KeyY",
+  },
+  {
+    // N Key
+    id: "no",
+    altKey: false,
+    ctrlKey: false,
+    // metaKey: false,
+    shiftKey: false,
+    key: "KeyN",
   },
 ];

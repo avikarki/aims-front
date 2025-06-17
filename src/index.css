@@ -26,3 +26,8 @@ tfoot {
   overflow: hidden;
   background: var(--primary-bg-color) !important;
 }
+
+.react-confirm-alert-overlay {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  z-index: 1050 !important; /* Above Bootstrap modals */
+}

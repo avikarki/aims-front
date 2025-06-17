@@ -1,6 +1,5 @@
 import { lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import ModalOverModal from "../components/ModalOverModal";
 
 const Login = lazy(() => import("../pages/auth/Login"));
 const Dashboard = lazy(() => import("../pages/Dashboard"));
@@ -21,6 +20,7 @@ const CalculatorScreen = lazy(() => import("../pages/demo/CalculatorScreen"));
 const BilingualDatePicker = lazy(
   () => import("../components/BilingualDatePicker")
 );
+const ModalOverModal = lazy(() => import("../components/ModalOverModal"));
 // const ExampleComponent = lazy(
 //   () => import("../pages/testPages/centralized/ExampleComponent")
 // );

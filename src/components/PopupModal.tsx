@@ -34,7 +34,7 @@ const PopupModal = ({
       <Modal.Body>{children}</Modal.Body>
       {buttonRequired && (
         <Modal.Footer>
-          <Button id="submit_button" onClick={submitForm}>
+          <Button id="submit_button" disabled={loading} onClick={submitForm}>
             {loading ? (
               <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
                 <Loader
@@ -53,7 +53,7 @@ const PopupModal = ({
               />
             )}
           </Button>
-          <Button variant="secondary" onClick={onClose}>
+          <Button variant="secondary" onClick={onClose} disabled={loading}>
             Close <StyledShortcutKeyTitle title="Esc" />
           </Button>
         </Modal.Footer>
