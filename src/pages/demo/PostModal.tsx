@@ -122,7 +122,7 @@ const PostModal = <T extends FieldValues>({
     },
     {
       // disabled: showConfirmation, // Disable other shortcuts when confirmation is open
-      // allowInModal: ["yes", "no"], // Allow Y/N in modalsn
+      // allowInModal: ["yes", "no"], // Allow Y/N in modal
     }
   );
 

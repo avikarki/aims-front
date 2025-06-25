@@ -5,6 +5,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import type { FallbackProps } from "react-error-boundary";
 import { Stack } from "react-bootstrap";
 import Loader from "./components/Loader";
+import { ToastContainer } from "react-toastify";
 
 function RootErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
@@ -33,6 +34,7 @@ export default function App() {
     <ErrorBoundary FallbackComponent={RootErrorFallback}>
       <Suspense fallback={<RootFallback />}>
         <RouterProvider router={router} />
+        <ToastContainer />
       </Suspense>
     </ErrorBoundary>
   );

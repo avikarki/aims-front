@@ -1,5 +1,6 @@
 import type { JSX } from "react";
 import { Navigate } from "react-router-dom";
+import { useAppSelector } from "../app/hooks";
 
 export default function ProtectedRoute({
   children,
@@ -8,7 +9,8 @@ export default function ProtectedRoute({
   children: JSX.Element;
   requiredRoles?: string[];
 }) {
-  const token = localStorage.getItem("token");
+  const token = useAppSelector((state) => state.auth.token);
+  // const token = localStorage.getItem("token");
   const userRoles = JSON.parse(localStorage.getItem("roles") || "[]");
 
   const hasAccess =

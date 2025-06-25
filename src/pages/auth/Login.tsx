@@ -17,6 +17,11 @@ import { loginSchema } from "../../validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CheckboxField from "../../components/CheckboxField";
 import type { loginFormData } from "../../types";
+import { useLoginMutation } from "../../features/api/apiSlice";
+import { useAppDispatch } from "../../app/hooks";
+import { setCredentials } from "../../features/auth/authSlice";
+import { toast } from "react-toastify";
+import ButtonLoader from "../../components/ButtonLoader";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,9 +33,21 @@ const Login = () => {
     },
     resolver: yupResolver(loginSchema),
   });
+  const [login, { isLoading: logging }] = useLoginMutation();
+  const dispatch = useAppDispatch();
 
-  const submitForm: SubmitHandler<loginFormData> = (data) => {
-    console.log(data);
+  const submitForm: SubmitHandler<loginFormData> = async (data) => {
+    try {
+      console.log(data);
+      const { username, password, rememberMe } = data;
+      const credentials = { username, password };
+      const response = await login(credentials).unwrap();
+      dispatch(setCredentials({ ...response, persist: rememberMe }));
+      toast.success("Logged in!");
+    } catch (err) {
+      toast.error("Login failed. Please check your credentials.");
+      console.error("Login error: ", err);
+    }
   };
 
   return (
@@ -107,8 +124,16 @@ const Login = () => {
                       />
 
                       <div className="mt-3 d-grid">
-                        <Button variant="primary" type="submit">
-                          Log In
+                        <Button
+                          variant="primary"
+                          type="submit"
+                          disabled={logging}
+                        >
+                          {logging ? (
+                            <ButtonLoader text="Logging In" />
+                          ) : (
+                            "Log In"
+                          )}
                         </Button>
                       </div>
 
