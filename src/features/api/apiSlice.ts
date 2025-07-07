@@ -20,7 +20,7 @@ const mutex = new Mutex();
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_BASE_URL,
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.token;
+    const token = (getState() as RootState).auth.accessToken;
 
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
@@ -39,6 +39,7 @@ const baseQueryWithReauth: BaseQueryFn<
   await mutex.waitForUnlock();
 
   let result = await baseQuery(args, api, extraOptions);
+  console.log("Result: ", result);
 
   if (result.error && result.error.status === 401) {
     if (!mutex.isLocked()) {
@@ -139,6 +140,11 @@ export const apiSlice = createApi({
   endpoints: () => ({}),
 });
 
+type User = {
+  firstName: string;
+  lastName: string;
+};
+
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<LoginResponse, LoginRequest>({
@@ -163,8 +169,16 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
       }),
     }),
+
+    getCurrentAuthUser: builder.query<User, void>({
+      query: () => "/auth/me",
+    }),
   }),
 });
 
-export const { useLoginMutation, useRefreshTokenMutation, useLogoutMutation } =
-  authApiSlice;
+export const {
+  useLoginMutation,
+  useRefreshTokenMutation,
+  useLogoutMutation,
+  useGetCurrentAuthUserQuery,
+} = authApiSlice;

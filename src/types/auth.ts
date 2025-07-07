@@ -1,6 +1,6 @@
 // types/auth.ts
 export interface AuthState {
-  token: string | null;
+  accessToken: string | null;
   refreshToken: string | null;
   user: User | null;
   persist: boolean; // New: Remember me option
@@ -20,7 +20,7 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
-  token: string;
+  accessToken: string;
   refreshToken: string;
   user: User;
 }
@@ -30,6 +30,6 @@ export interface RefreshTokenRequest {
 }
 
 export interface RefreshTokenResponse {
-  token: string;
+  accessToken: string;
   refreshToken: string;
 }

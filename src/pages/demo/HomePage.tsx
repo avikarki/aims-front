@@ -1,11 +1,23 @@
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { Button, ListGroup, Container, Row, Col, Form } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Button,
+  ListGroup,
+  Container,
+  Row,
+  Col,
+  Form,
+  Stack,
+} from "react-bootstrap";
 import TestModal1 from "./TestModal1";
 import TestModal3 from "./TestModal3";
 import { shortcutKeys } from "../../shortcutKeys";
 import { useShortcuts } from "../../hooks/useShortcutKeys";
 import StyledShortcutKeyTitle from "../../components/StyledShortcutKeyTitle";
+import { useGetCurrentAuthUserQuery } from "../../features/api/apiSlice";
+import { clearCredentials } from "../../features/auth/authSlice";
+import { useAppDispatch } from "../../app/hooks";
+import { toast } from "react-toastify";
 
 type MenuProps = {
   id: string;
@@ -45,6 +57,8 @@ const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [openModal3, setOpenModal3] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   // const usableMenuKeys: string[] = shortcutKeys?.homepage?.menus?.map(
   //   (menu: MenuProps) => menu?.key
   // );
@@ -74,6 +88,12 @@ const HomePage = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setOpenModal3(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(clearCredentials());
+    toast.success("You logged out successfully!");
+    navigate("/login");
   };
 
   // Performs the functions when pressing keyboard keys
@@ -129,6 +149,10 @@ const HomePage = () => {
   // Activate shortcuts
   useShortcuts(shortcutKeys, shortcutHandlers);
 
+  const { data: user } = useGetCurrentAuthUserQuery();
+
+  console.log("Current Auth User: ", user);
+
   return (
     <Container className="mt-5">
       <Row className="justify-content-end mx-0">
@@ -140,9 +164,17 @@ const HomePage = () => {
           className="w-50"
         />
       </Row>
+      <Stack direction="horizontal">
+        <h1>
+          Hello, {user?.firstName} {user?.lastName}
+        </h1>
+        <Button variant="danger" className="ms-auto" onClick={handleLogout}>
+          Logout
+        </Button>
+      </Stack>
       <Row>
         <Col>
-          <h1>Home Page</h1>
+          {/* <h1>Home Page</h1> */}
           <ListGroup>
             {menus.map(({ id, title, path }) => {
               return (

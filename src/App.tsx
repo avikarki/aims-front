@@ -3,9 +3,13 @@ import router from "./router";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import type { FallbackProps } from "react-error-boundary";
-import { Stack } from "react-bootstrap";
-import Loader from "./components/Loader";
+// import { Stack } from "react-bootstrap";
+// import Loader from "./components/Loader";
 import { ToastContainer } from "react-toastify";
+// import { useAppDispatch, useAppSelector } from "./app/hooks";
+// import { useRefreshTokenMutation } from "./features/api/apiSlice";
+// import { clearCredentials } from "./features/auth/authSlice";
+// import { setCredentials } from "./features/auth/authSlice";
 
 function RootErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
@@ -19,17 +23,68 @@ function RootErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 
 function RootFallback() {
   return (
-    <Stack
-      direction="horizontal"
-      className="justify-content-center align-items-center"
-      style={{ height: "100vh" }}
-    >
-      <Loader variant="primary" height="50px" width="50px" borderWidth="5px" />
-    </Stack>
+    // <Stack
+    //   direction="horizontal"
+    //   className="justify-content-center align-items-center"
+    //   style={{ height: "100vh" }}
+    // >
+    //   <Loader variant="primary" height="50px" width="50px" borderWidth="5px" />
+    // </Stack>
+    <div id="preloader">
+      <div id="status">
+        <div className="spinner-chase">
+          <div className="chase-dot"></div>
+          <div className="chase-dot"></div>
+          <div className="chase-dot"></div>
+          <div className="chase-dot"></div>
+          <div className="chase-dot"></div>
+          <div className="chase-dot"></div>
+        </div>
+      </div>
+    </div>
   );
 }
 
+// const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
+//   const dispatch = useAppDispatch();
+
+//   useEffect(() => {
+//     // Check for existing auth data on app load
+//     const authData =
+//       localStorage.getItem("auth") || sessionStorage.getItem("auth");
+//     if (authData) {
+//       try {
+//         const parsedData = JSON.parse(authData);
+//         if (parsedData.accessToken) {
+//           dispatch(setCredentials(parsedData));
+//         }
+//       } catch (e) {
+//         console.error("Failed to parse auth data", e);
+//       }
+//     }
+//   }, [dispatch]);
+
+//   return <>{children}</>;
+// };
+
 export default function App() {
+  // const dispatch = useAppDispatch();
+  // const refreshToken = useAppSelector((state) => state.auth.refreshToken);
+  // const [refresh] = useRefreshTokenMutation();
+
+  // useEffect(() => {
+  //   if (refreshToken) {
+  //     // Attempt to refresh token on app mount
+  //     refresh({ refreshToken })
+  //       .unwrap()
+  //       .catch(() => {
+  //         // Refresh failed - clear auth state
+  //         // You might want to dispatch logout here
+  //         dispatch(clearCredentials());
+  //       });
+  //   }
+  // }, []);
+
   return (
     <ErrorBoundary FallbackComponent={RootErrorFallback}>
       <Suspense fallback={<RootFallback />}>

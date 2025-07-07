@@ -1,5 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { AuthState, User } from "../../types";
+import { createSelector } from "@reduxjs/toolkit";
+import type { RootState } from "../../app/store";
 
 // Initialize from localStorage or sessionStorage
 const loadInitialState = (): AuthState => {
@@ -8,7 +10,7 @@ const loadInitialState = (): AuthState => {
   return authData
     ? JSON.parse(authData)
     : {
-        token: null,
+        accessToken: null,
         refreshToken: null,
         user: null,
         persist: false,
@@ -24,14 +26,19 @@ const authSlice = createSlice({
     setCredentials: (
       state,
       action: PayloadAction<{
-        token: string;
+        accessToken: string;
         refreshToken: string;
         user: User;
         persist?: boolean;
       }>
     ) => {
-      const { token, refreshToken, user, persist = false } = action.payload;
-      state.token = token;
+      const {
+        accessToken,
+        refreshToken,
+        user,
+        persist = false,
+      } = action.payload;
+      state.accessToken = accessToken;
       state.refreshToken = refreshToken;
       state.user = user;
       state.persist = persist;
@@ -41,7 +48,7 @@ const authSlice = createSlice({
       storage.setItem(
         "auth",
         JSON.stringify({
-          token,
+          accessToken,
           refreshToken,
           user,
           persist,
@@ -50,7 +57,7 @@ const authSlice = createSlice({
     },
 
     clearCredentials: (state) => {
-      state.token = null;
+      state.accessToken = null;
       state.refreshToken = null;
       state.user = null;
 
@@ -63,3 +70,17 @@ const authSlice = createSlice({
 
 export const { setCredentials, clearCredentials } = authSlice.actions;
 export default authSlice.reducer;
+
+// Basic selectors
+const selectAuthState = (state: RootState) => state.auth;
+
+// Memoized selectors
+export const selectTokens = createSelector([selectAuthState], (auth) => ({
+  accessToken: auth.accessToken,
+  refreshToken: auth.refreshToken,
+}));
+
+// export const selectUserRoles = createSelector(
+//   [selectAuthState],
+//   (auth) => auth.user?.roles || []
+// );

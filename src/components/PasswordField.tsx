@@ -3,8 +3,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import { Controller } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
-import { Eye, EyeSlash } from "react-bootstrap-icons";
 import type { PasswordFieldProps } from "../types";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const PasswordField = <T extends FieldValues>({
   name,
@@ -34,7 +34,11 @@ const PasswordField = <T extends FieldValues>({
                 variant="light"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <Eye /> : <EyeSlash />}
+                {showPassword ? (
+                  <FaRegEye size={18} />
+                ) : (
+                  <FaRegEyeSlash size={18} />
+                )}
               </Button>
               <Form.Control.Feedback type="invalid">
                 {error?.message}

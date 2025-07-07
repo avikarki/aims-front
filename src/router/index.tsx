@@ -1,8 +1,9 @@
 import { lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import AuthRedirect from "../components/AuthRedirect";
 
 const Login = lazy(() => import("../pages/auth/Login"));
-const Dashboard = lazy(() => import("../pages/Dashboard"));
+const Dashboard = lazy(() => import("../pages/demo/Dashboard"));
 const ProtectedRoute = lazy(() => import("../components/ProtectedRoute"));
 const UserManagement = lazy(() => import("../pages/UserManagement"));
 const AssignRoles = lazy(() => import("../pages/AssignRoles"));
@@ -33,12 +34,20 @@ const setTitle = (title: string) => {
 const router = createBrowserRouter([
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <AuthRedirect>
+        <Login />
+      </AuthRedirect>
+    ),
     loader: () => setTitle("Login"),
   },
   {
     path: "/register",
-    element: <Signup />,
+    element: (
+      <AuthRedirect>
+        <Signup />
+      </AuthRedirect>
+    ),
     loader: () => setTitle("Registration"),
   },
   {
@@ -91,7 +100,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/demo/homepage",
-    element: <HomePage />,
+    element: (
+      <ProtectedRoute>
+        <HomePage />
+      </ProtectedRoute>
+    ),
     loader: () => setTitle("HomePage"),
   },
   {

@@ -240,7 +240,7 @@ import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import NepaliDate from "nepali-date-converter";
 import "react-datepicker/dist/react-datepicker.css";
-import { Repeat } from "react-bootstrap-icons";
+import { FaRepeat } from "react-icons/fa6";
 
 const BilingualDatePicker = () => {
   const [isNepali, setIsNepali] = useState<boolean>(false);
@@ -358,7 +358,7 @@ const BilingualDatePicker = () => {
           />
         )}
         <Button variant="light" onClick={() => setIsNepali(!isNepali)}>
-          <Repeat />
+          <FaRepeat />
         </Button>
       </InputGroup>
     </div>

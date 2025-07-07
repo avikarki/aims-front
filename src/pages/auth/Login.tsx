@@ -8,9 +8,8 @@ import Button from "react-bootstrap/Button";
 import loginBg from "../../assets/login-bg.svg";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import "./login.css";
 import TextField from "../../components/TextField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PasswordField from "../../components/PasswordField";
 // import { loginForm } from "../../types";
 import { loginSchema } from "../../validation";
@@ -35,6 +34,7 @@ const Login = () => {
   });
   const [login, { isLoading: logging }] = useLoginMutation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const submitForm: SubmitHandler<loginFormData> = async (data) => {
     try {
@@ -42,7 +42,9 @@ const Login = () => {
       const { username, password, rememberMe } = data;
       const credentials = { username, password };
       const response = await login(credentials).unwrap();
+      console.log("Login Response: ", response);
       dispatch(setCredentials({ ...response, persist: rememberMe }));
+      navigate("/demo/homepage");
       toast.success("Logged in!");
     } catch (err) {
       toast.error("Login failed. Please check your credentials.");
@@ -52,33 +54,19 @@ const Login = () => {
 
   return (
     <>
-      {/* <Spinner animation="grow" /> */}
-      {/* <div id="preloader">
-        <div id="status">
-          <div className="spinner-chase">
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-          </div>
-        </div>
-      </div> */}
-
       <div
         className="account-pages pt-sm-5"
         style={{
           height: "100vh",
           display: "flex",
-          backgroundColor: "#F8F8FB",
+          // backgroundColor: "#F8F8FB",
           alignItems: "center",
         }}
       >
         <Container>
           <Row className="justify-content-center">
-            <Col md={8} lg={6} xl={5}>
-              <Card className="overflow-hidden" border="light">
+            <Col xl={5} lg={6} md={8}>
+              <Card className="overflow-hidden">
                 <Card.Body>
                   <div className="bg-primary bg-soft">
                     <Row>

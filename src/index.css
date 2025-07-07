@@ -1,4 +1,7 @@
-:root {
+@import "tailwindcss";
+/* @custom-variant hover (&:hover); */
+
+/* :root {
   --primary-bg-color: rgb(85, 110, 230);
   --primary-btn-bolor: #2672b9;
 }
@@ -9,14 +12,14 @@ p {
 
 a {
   text-decoration: none;
-}
+} */
 
 /* td,
 tfoot {
   padding: 6px 16px !important;
 } */
 
-.btn-primary {
+/* .btn-primary {
   color: #fff;
   background-color: var(--primary-btn-bolor);
   border-color: var(--primary-btn-bolor);
@@ -29,5 +32,9 @@ tfoot {
 
 .react-confirm-alert-overlay {
   background-color: rgba(0, 0, 0, 0.1) !important;
-  z-index: 1050 !important; /* Above Bootstrap modals */
+  z-index: 1050 !important; 
 }
+
+.test-btn:hover {
+  background-color: red;
+} */
