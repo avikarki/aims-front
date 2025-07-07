@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { ChangeEvent } from "react";
 import NepaliDate from "nepali-date-converter";
-import { Repeat } from "react-bootstrap-icons";
+import { FaRepeat } from "react-icons/fa6";
 import "./dateField.css";
 
 const BilingualDateField = () => {
@@ -67,7 +67,7 @@ const BilingualDateField = () => {
           className="date-input"
         />
         <button onClick={toggleDateType} className="toggle-button">
-          <Repeat />
+          <FaRepeat />
         </button>
       </div>
       <div className="date-type-indicator">
