@@ -151,6 +151,9 @@ const Login = () => {
                   </Link>
                 </p>
               </div>
+              <button className="bg-red-500 rounded-full text-white py-2 px-5 mb-5 font-bold hover:bg-red-600 focus:bg-red-900">
+                Click Me Button
+              </button>
             </Col>
           </Row>
         </Container>
