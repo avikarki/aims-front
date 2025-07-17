@@ -1,8 +1,8 @@
 import { Button, Modal } from "react-bootstrap";
-import type { PopupProps } from "../types";
-import { shortcutKeys } from "../shortcutKeys";
-import { useShortcuts } from "../hooks/useShortcutKeys";
-import StyledShortcutKeyTitle from "./StyledShortcutKeyTitle";
+import type { PopupProps } from "../../types";
+import { shortcutKeys } from "../../shortcutKeys";
+import { useShortcuts } from "../../hooks/useShortcutKeys";
+import StyledShortcutKeyTitle from "../StyledShortcutKeyTitle";
 import ButtonLoader from "./ButtonLoader";
 
 const PopupModal = ({

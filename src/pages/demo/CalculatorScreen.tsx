@@ -193,9 +193,9 @@
 
 import { useState } from "react";
 import { Form, Container } from "react-bootstrap";
-import Calculator from "../../components/Calculator";
+import Calculator from "../../components/utility/Calculator";
 // import useShortcutKeys from "../hooks/useShortcutKeys";
-import PopupModal from "../../components/PopupModal";
+import PopupModal from "../../components/utility/PopupModal";
 import { useShortcuts } from "../../hooks/useShortcutKeys";
 import { shortcutKeys } from "../../shortcutKeys";
 

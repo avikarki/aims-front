@@ -1,6 +1,6 @@
 import { Form } from "react-bootstrap";
 // import { shortcutKeys2 } from "../../shortcutKeys";
-import PopupModal from "../../components/PopupModal";
+import PopupModal from "../../components/utility/PopupModal";
 import TextField from "../../components/TextField";
 import type { FieldValues, UseFormHandleSubmit } from "react-hook-form";
 // import { useAppDispatch } from "../../app/hooks";
@@ -14,7 +14,7 @@ import {
 import { useState } from "react";
 import { useShortcuts } from "../../hooks/useShortcutKeys";
 import { shortcutKeys } from "../../shortcutKeys";
-import { ConfirmDialog } from "../../components/ConfirmationDialog";
+import { ConfirmDialog } from "../../components/utility/ConfirmationDialog";
 // import { confirmAlert } from "react-confirm-alert";
 
 interface ModalProps<T extends FieldValues> {

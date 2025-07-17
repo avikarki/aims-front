@@ -1,34 +1,28 @@
 const TestNavbar = () => {
   return (
     <>
-      <div id="preloader">
-        <div id="status">
-          <div className="spinner-chase">
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-            <div className="chase-dot"></div>
-          </div>
-        </div>
-      </div>
-
       <div id="layout-wrapper">
         <header id="page-topbar">
           <div className="navbar-header">
             <div className="d-flex">
               <div className="navbar-brand-box">
-                <a href="index.html" className="logo logo-dark">
+                <a href="index.html" className="logo logo-light">
                   <span className="logo-sm">
-                    <img src="assets/images/logo.png" alt="" height="50" />
+                    <img src="assets/images/favicon.png" alt="" height="26" />
                   </span>
                   <span className="logo-lg">
-                    <img src="assets/images/logo.png" alt="" height="50" />
+                    <img src="assets/images/logo.png" alt="" height="40" />
                   </span>
                 </a>
               </div>
 
+              <button
+                type="button"
+                className="btn btn-sm px-3 font-size-16 header-item waves-effect"
+                id="vertical-menu-btn"
+              >
+                <i className="bx  bx-border-all menu-icon   btn-primary"></i>
+              </button>
               <button
                 type="button"
                 className="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
@@ -38,20 +32,223 @@ const TestNavbar = () => {
                 <i className="fa fa-fw fa-bars"></i>
               </button>
 
-              <form className="app-search d-none d-lg-block">
-                <div className="position-relative">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search..."
-                  />
-                  <span className="bx bx-search-alt"></span>
-                </div>
-              </form>
+              <div className="topnav">
+                <nav className="navbar navbar-light navbar-expand-lg topnav-menu">
+                  <div
+                    className="collapse navbar-collapse"
+                    id="topnav-menu-content"
+                  >
+                    <ul className="navbar-nav">
+                      <li className="nav-item">
+                        <a
+                          className="nav-link"
+                          href="#"
+                          id="topnav-dashboard"
+                          role="button"
+                        >
+                          <i className="bx bx-slider me-2"></i>
+                          <span key="t-dashboards">User Management</span>
+                        </a>
+                      </li>
+
+                      <li className="nav-item dropdown">
+                        <a
+                          className="nav-link dropdown-toggle arrow-none"
+                          href="#"
+                          id="topnav-pages"
+                          role="button"
+                        >
+                          <i className="bx bx-paper-plane me-2"></i>
+                          <span key="t-apps">Productivity</span>{" "}
+                          <div className="arrow-down"></div>
+                        </a>
+                        <div
+                          className="dropdown-menu"
+                          aria-labelledby="topnav-pages"
+                        >
+                          <a href="#" className="dropdown-item" key="t-chat">
+                            Task
+                          </a>
+                          <a
+                            href="#"
+                            className="dropdown-item"
+                            key="t-file-manager"
+                          >
+                            Event
+                          </a>
+                          <a
+                            href="#"
+                            className="dropdown-item"
+                            key="t-file-manager"
+                          >
+                            Calendar
+                          </a>
+                        </div>
+                      </li>
+
+                      <li className="nav-item dropdown">
+                        <a
+                          className="nav-link dropdown-toggle arrow-none"
+                          href="#"
+                          id="topnav-components"
+                          role="button"
+                        >
+                          <i className="bx bx-collection me-2"></i>
+                          <span key="t-components">Transaction</span>{" "}
+                          <div className="arrow-down"></div>
+                        </a>
+                        <div
+                          className="dropdown-menu"
+                          aria-labelledby="topnav-components"
+                        >
+                          <div className="dropdown">
+                            <a
+                              className="dropdown-item dropdown-toggle arrow-none"
+                              href="#"
+                              id="topnav-form"
+                              role="button"
+                            >
+                              <span key="t-forms">Forms</span>{" "}
+                              <div className="arrow-down"></div>
+                            </a>
+                            <div
+                              className="dropdown-menu"
+                              aria-labelledby="topnav-form"
+                            >
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-form-elements"
+                              >
+                                Form Elements
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-form-layouts"
+                              >
+                                Form Elements
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-form-elements"
+                              >
+                                Form Elements
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-form-layouts"
+                              >
+                                Form Elements
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-form-elements"
+                              >
+                                Form Elements
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-form-layouts"
+                              >
+                                Form Elements
+                              </a>
+                            </div>
+                          </div>
+                          <div className="dropdown">
+                            <a
+                              className="dropdown-item dropdown-toggle arrow-none"
+                              href="#"
+                              id="topnav-table"
+                              role="button"
+                            >
+                              <span key="t-tables">Tables</span>{" "}
+                              <div className="arrow-down"></div>
+                            </a>
+                            <div
+                              className="dropdown-menu"
+                              aria-labelledby="topnav-table"
+                            >
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-basic-tables"
+                              >
+                                Basic Tables
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-basic-tables"
+                              >
+                                Basic Tables
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-basic-tables"
+                              >
+                                Basic Tables
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-basic-tables"
+                              >
+                                Basic Tables
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-basic-tables"
+                              >
+                                Basic Tables
+                              </a>
+                              <a
+                                href="#"
+                                className="dropdown-item"
+                                key="t-basic-tables"
+                              >
+                                Basic Tables
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li className="nav-item">
+                        <a
+                          className="nav-link"
+                          href="#"
+                          id="topnav-dashboard"
+                          role="button"
+                        >
+                          <i className="bx bx-home-circle me-2"></i>
+                          <span key="t-dashboards">Report</span>
+                        </a>
+                      </li>
+                      <li className="nav-item">
+                        <a
+                          className="nav-link waves-effect waves-light"
+                          data-bs-toggle="modal"
+                          data-bs-target=".bs-example-modal-center"
+                        >
+                          <i className="bx bx-note me-2"></i>
+                          <span key="t-dashboards">Form</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
             </div>
 
             <div className="d-flex">
-              <div className="dropdown d-inline-block d-lg-none ms-2">
+              <div className="dropdown d-inline-block ms-2">
                 <button
                   type="button"
                   className="btn header-item noti-icon waves-effect"
@@ -73,12 +270,13 @@ const TestNavbar = () => {
                           type="text"
                           className="form-control"
                           placeholder="Search ..."
-                          aria-label="Search input"
+                          aria-label="Recipient's username"
                         />
-                        <button className="btn btn-primary" type="submit">
-                          <i className="mdi mdi-magnify"></i>
-                        </button>
-                        s
+                        <div className="input-group-append">
+                          <button className="btn btn-primary" type="submit">
+                            <i className="mdi mdi-magnify"></i>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </form>
@@ -273,225 +471,449 @@ const TestNavbar = () => {
             </div>
           </div>
         </header>
-
-        <div className="topnav">
-          <div className="container-fluid">
-            <nav className="navbar navbar-light navbar-expand-lg topnav-menu">
-              <div
-                className="collapse navbar-collapse"
-                id="topnav-menu-content"
-              >
-                <ul className="navbar-nav">
-                  <li className="nav-item active">
-                    <a
-                      className="nav-link"
-                      href="#"
-                      id="topnav-dashboard"
-                      role="button"
-                    >
-                      <i className="bx bx-home-circle me-2"></i>
-                      <span key="t-dashboards">Dashboards</span>
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="#"
-                      id="topnav-dashboard"
-                      role="button"
-                    >
-                      <i className="bx bx-home-circle me-2"></i>
-                      <span key="t-dashboards">User Management</span>
-                    </a>
-                  </li>
-
-                  <li className="nav-item dropdown">
-                    <a
-                      className="nav-link dropdown-toggle arrow-none"
-                      href="#"
-                      id="topnav-pages"
-                      role="button"
-                    >
-                      <i className="bx bx-customize me-2"></i>
-                      <span key="t-apps">Productivity</span>{" "}
-                      <div className="arrow-down"></div>
-                    </a>
-                    <div
-                      className="dropdown-menu"
-                      aria-labelledby="topnav-pages"
-                    />
-                    <a href="#" className="dropdown-item" key="t-chat">
-                      Task
-                    </a>
-                    <a href="#" className="dropdown-item" key="t-file-manager">
-                      Event
-                    </a>
-                    <a href="#" className="dropdown-item" key="t-file-manager">
-                      Calendar
-                    </a>
-                  </li>
-
-                  <li className="nav-item dropdown">
-                    <a
-                      className="nav-link dropdown-toggle arrow-none"
-                      href="#"
-                      id="topnav-components"
-                      role="button"
-                    >
-                      <i className="bx bx-collection me-2"></i>
-                      <span key="t-components">Transaction</span>{" "}
-                      <div className="arrow-down"></div>
-                    </a>
-                    <div
-                      className="dropdown-menu"
-                      aria-labelledby="topnav-components"
-                    >
-                      <div className="dropdown">
-                        <a
-                          className="dropdown-item dropdown-toggle arrow-none"
-                          href="#"
-                          id="topnav-form"
-                          role="button"
+        <div
+          className="modal fade bs-example-modal-center"
+          tabIndex={-1}
+          role="dialog"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Form Title</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <form className="needs-validation" noValidate>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="mb-3">
+                        <label
+                          htmlFor="validationCustom01"
+                          className="form-label"
                         >
-                          <span key="t-forms">Forms</span>{" "}
-                          <div className="arrow-down"></div>
-                        </a>
-                        <div
-                          className="dropdown-menu"
-                          aria-labelledby="topnav-form"
-                        >
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-form-elements"
-                          >
-                            Form Elements
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-form-layouts"
-                          >
-                            Form Elements
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-form-elements"
-                          >
-                            Form Elements
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-form-layouts"
-                          >
-                            Form Elements
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-form-elements"
-                          >
-                            Form Elements
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-form-layouts"
-                          >
-                            Form Elements
-                          </a>
-                        </div>
+                          First name
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="validationCustom01"
+                          placeholder="First name"
+                          value="Mark"
+                          required
+                        />
+                        <div className="valid-feedback">Looks good!</div>
                       </div>
-                      <div className="dropdown">
-                        <a
-                          className="dropdown-item dropdown-toggle arrow-none"
-                          href="#"
-                          id="topnav-table"
-                          role="button"
+                    </div>
+                    <div className="col-md-6">
+                      <div className="mb-3">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
                         >
-                          <span key="t-tables">Tables</span>{" "}
-                          <div className="arrow-down"></div>
-                        </a>
-                        <div
-                          className="dropdown-menu"
-                          aria-labelledby="topnav-table"
+                          Last name
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="validationCustom02"
+                          placeholder="Last name"
+                          value="Otto"
+                          required
+                        />
+                        <div className="valid-feedback">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-4">
+                      <div className="mb-3">
+                        <label
+                          htmlFor="validationCustom03"
+                          className="form-label"
                         >
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-basic-tables"
-                          >
-                            Basic Tables
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-basic-tables"
-                          >
-                            Basic Tables
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-basic-tables"
-                          >
-                            Basic Tables
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-basic-tables"
-                          >
-                            Basic Tables
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-basic-tables"
-                          >
-                            Basic Tables
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            key="t-basic-tables"
-                          >
-                            Basic Tables
-                          </a>
+                          State
+                        </label>
+                        <select
+                          className="form-select"
+                          id="validationCustom03"
+                          required
+                        >
+                          <option selected disabled value="">
+                            Choose...
+                          </option>
+                          <option>...</option>
+                        </select>
+                        <div className="invalid-feedback">
+                          Please select a valid state.
                         </div>
                       </div>
                     </div>
-                  </li>
+                    <div className="col-md-4">
+                      <div className="mb-3">
+                        <label
+                          htmlFor="validationCustom04"
+                          className="form-label"
+                        >
+                          City
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="validationCustom04"
+                          placeholder="City"
+                          required
+                        />
+                        <div className="invalid-feedback">
+                          Please provide a valid city.
+                        </div>
+                      </div>
+                    </div>
 
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="#"
-                      id="topnav-dashboard"
-                      role="button"
+                    <div className="col-md-4">
+                      <div className="mb-3">
+                        <label
+                          htmlFor="validationCustom05"
+                          className="form-label"
+                        >
+                          Zip
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="validationCustom05"
+                          placeholder="Zip"
+                          required
+                        />
+                        <div className="invalid-feedback">
+                          Please provide a valid zip.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mb-3">
+                    <label
+                      htmlFor="example-date-input"
+                      className="col-form-label"
                     >
-                      <i className="bx bx-home-circle me-2"></i>
-                      <span key="t-dashboards">Report</span>
-                    </a>
-                  </li>
+                      Date
+                    </label>
+                    <input
+                      className="form-control"
+                      type="date"
+                      value="2019-08-19"
+                      id="example-date-input"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="paymentType"
+                        id="validationCustom06"
+                        required
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="validationCustom06"
+                      >
+                        Cash
+                      </label>
+                      <div className="invalid-feedback">Please choose.</div>
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="paymentType"
+                        id="creditRadio"
+                        required
+                      />
+                      <label className="form-check-label" htmlFor="creditRadio">
+                        Credit
+                      </label>
+                      <div className="invalid-feedback">Please choose.</div>
+                    </div>
+                  </div>
 
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="#"
-                      id="topnav-dashboard"
-                      role="button"
-                    >
-                      <i className="bx bx-home-circle me-2"></i>
-                      <span key="t-dashboards">Chart</span>
-                    </a>
-                  </li>
-                </ul>
+                  <div className="form-check mb-3">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="invalidCheck"
+                      required
+                    />
+                    <label className="form-check-label" htmlFor="invalidCheck">
+                      Agree to terms and conditions
+                    </label>
+                    <div className="invalid-feedback">
+                      You must agree before submitting.
+                    </div>
+                  </div>
+                  <div>
+                    <button className="btn btn-primary" type="submit">
+                      Submit form
+                    </button>
+                  </div>
+                </form>
               </div>
-            </nav>
+            </div>
+          </div>
+        </div>
+        <div className="vertical-menu">
+          <div data-simplebar className="h-100">
+            <div id="sidebar-menu">
+              <ul className="metismenu list-unstyled" id="side-menu">
+                <li>
+                  <a href="javascript: void(0);" className="waves-effect">
+                    <i className="bx bx-home-circle"></i>
+                    <span key="t-dashboards">Dashboards</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="javascript: void(0);" className="waves-effect">
+                    <i className="bx bx-calendar"></i>
+                    <span key="t-dashboards">Calendars</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="javascript: void(0);" className="waves-effect">
+                    <i className="bx bx-chat"></i>
+                    <span key="t-chat">Chat</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="javascript: void(0);" className="waves-effect">
+                    <i className="bx bx-file"></i>
+                    <span key="t-file-manager">File Manager</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="javascript: void(0);"
+                    className="has-arrow waves-effect"
+                  >
+                    <i className="bx bx-store"></i>
+                    <span key="t-ecommerce">Sells</span>
+                  </a>
+                  <ul className="sub-menu" aria-expanded="false">
+                    <li>
+                      <a href="javascript: void(0);" key="t-products">
+                        Products
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-product-detail">
+                        Product Detail
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-orders">
+                        Orders
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-customers">
+                        Customers
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-cart">
+                        Cart
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-checkout">
+                        Checkout
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-shops">
+                        Shops
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-add-product">
+                        Add Product
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a
+                    href="javascript: void(0);"
+                    className="has-arrow waves-effect"
+                  >
+                    <i className="bx bx-envelope"></i>
+                    <span key="t-email">Email</span>
+                  </a>
+                  <ul className="sub-menu" aria-expanded="false">
+                    <li>
+                      <a href="email-inbox.html" key="t-inbox">
+                        Inbox
+                      </a>
+                    </li>
+                    <li>
+                      <a href="email-read.html" key="t-read-email">
+                        Read Email
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);">
+                        <span key="t-email-templates">Templates</span>
+                      </a>
+                      <ul className="sub-menu" aria-expanded="true">
+                        <li>
+                          <a
+                            href="email-template-basic.html"
+                            key="t-basic-action"
+                          >
+                            Basic Action
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="email-template-alert.html"
+                            key="t-alert-email"
+                          >
+                            Alert Email
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="email-template-billing.html"
+                            key="t-bill-email"
+                          >
+                            Billing Email
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a
+                    href="javascript: void(0);"
+                    className="has-arrow waves-effect"
+                  >
+                    <i className="bx bx-receipt"></i>
+                    <span key="t-invoices">Invoices</span>
+                  </a>
+                  <ul className="sub-menu" aria-expanded="false">
+                    <li>
+                      <a href="javascript: void(0);" key="t-invoice-list">
+                        Invoice List
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-invoice-detail">
+                        Invoice Detail
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a
+                    href="javascript: void(0);"
+                    className="has-arrow waves-effect"
+                  >
+                    <i className="bx bx-task"></i>
+                    <span key="t-tasks">Tasks</span>
+                  </a>
+                  <ul className="sub-menu" aria-expanded="false">
+                    <li>
+                      <a href="javascript: void(0);" key="t-task-list">
+                        Task 1
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-kanban-board">
+                        Task Details
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-create-task">
+                        Create Task
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a
+                    href="javascript: void(0);"
+                    className="has-arrow waves-effect"
+                  >
+                    <i className="bx bxs-bar-chart-alt-2"></i>
+                    <span key="t-charts">Charts</span>
+                  </a>
+                  <ul className="sub-menu" aria-expanded="false">
+                    <li>
+                      <a href="javascript: void(0);" key="t-apex-charts">
+                        Chart 1
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" key="t-e-charts">
+                        Chart 2
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a
+                    href="javascript: void(0);"
+                    className="has-arrow waves-effect"
+                  >
+                    <i className="bx bx-share-alt"></i>
+                    <span key="t-multi-level">Multi Level</span>
+                  </a>
+                  <ul className="sub-menu" aria-expanded="true">
+                    <li>
+                      <a href="javascript: void(0);" key="t-level-1-1">
+                        Level 1.1
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="javascript: void(0);"
+                        className="has-arrow"
+                        key="t-level-1-2"
+                      >
+                        Level 1.2
+                      </a>
+                      <ul className="sub-menu" aria-expanded="true">
+                        <li>
+                          <a href="javascript: void(0);" key="t-level-2-1">
+                            Level 2.1
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript: void(0);" key="t-level-2-2">
+                            Level 2.2
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -679,7 +1101,6 @@ const TestNavbar = () => {
                       </div>
                     </div>
                   </div>
-
                   <div className="card">
                     <div className="card-body">
                       <div
@@ -699,7 +1120,7 @@ const TestNavbar = () => {
                     <div className="card-body">
                       <h4 className="card-title mb-4">Latest Transaction</h4>
                       <div className="table-responsive">
-                        <table className="table align-middle table-nowrap mb-0">
+                        <table className="table align-middle table-nowrap mb-0 d-none">
                           <thead className="table-light">
                             <tr>
                               <th style={{ width: "20px" }}>
@@ -763,8 +1184,6 @@ const TestNavbar = () => {
                                 <button
                                   type="button"
                                   className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                  data-bs-toggle="modal"
-                                  data-bs-target=".transaction-detailModal"
                                 >
                                   View Details
                                 </button>
@@ -808,8 +1227,6 @@ const TestNavbar = () => {
                                 <button
                                   type="button"
                                   className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                  data-bs-toggle="modal"
-                                  data-bs-target=".transaction-detailModal"
                                 >
                                   View Details
                                 </button>
@@ -853,8 +1270,6 @@ const TestNavbar = () => {
                                 <button
                                   type="button"
                                   className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                  data-bs-toggle="modal"
-                                  data-bs-target=".transaction-detailModal"
                                 >
                                   View Details
                                 </button>
@@ -898,8 +1313,6 @@ const TestNavbar = () => {
                                 <button
                                   type="button"
                                   className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                  data-bs-toggle="modal"
-                                  data-bs-target=".transaction-detailModal"
                                 >
                                   View Details
                                 </button>
@@ -942,8 +1355,6 @@ const TestNavbar = () => {
                                 <button
                                   type="button"
                                   className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                  data-bs-toggle="modal"
-                                  data-bs-target=".transaction-detailModal"
                                 >
                                   View Details
                                 </button>
@@ -986,8 +1397,312 @@ const TestNavbar = () => {
                                 <button
                                   type="button"
                                   className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                  data-bs-toggle="modal"
-                                  data-bs-target=".transaction-detailModal"
+                                >
+                                  View Details
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table className="table align-middle table-nowrap mb-0">
+                          <thead className="table-light">
+                            <tr>
+                              <th style={{ width: "20px" }}>
+                                <div className="form-check font-size-16 align-middle">
+                                  <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="transactionCheck01"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="transactionCheck01"
+                                  ></label>
+                                </div>
+                              </th>
+                              <th className="align-middle">Order ID</th>
+                              <th className="align-middle">Billing Name</th>
+                              <th className="align-middle">Date</th>
+                              <th className="align-middle">Total</th>
+                              <th className="align-middle">Payment Status</th>
+                              <th className="align-middle">Payment Method</th>
+                              <th className="align-middle">View Details</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr
+                              data-bs-toggle="collapse"
+                              data-bs-target="#row1"
+                              className="accordion-toggle"
+                            >
+                              <td>
+                                <div className="form-check font-size-16">
+                                  <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="transactionCheck02"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="transactionCheck02"
+                                  ></label>
+                                </div>
+                              </td>
+                              <td>
+                                <a
+                                  href="javascript: void(0);"
+                                  className="text-body fw-bold"
+                                >
+                                  #SK2540
+                                </a>{" "}
+                              </td>
+                              <td>Neal Matthews</td>
+                              <td>07 Oct, 2019</td>
+                              <td>$400</td>
+                              <td>
+                                <span className="badge badge-pill badge-soft-success font-size-11">
+                                  Paid
+                                </span>
+                              </td>
+                              <td>
+                                <i className="fab fa-cc-mastercard me-1"></i>{" "}
+                                Mastercard
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                >
+                                  View Details
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colSpan={8} className="p-0">
+                                <div
+                                  id="row1"
+                                  className="accordion-collapse collapse"
+                                >
+                                  <div className="p-3 accordion-body accordion-body--alternate">
+                                    <strong>Details for Item 1:</strong>
+                                    <br />
+                                    Lorem Ipsum is simply dummy text of the
+                                    printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy
+                                    text ever since the 1500s, when an unknown
+                                    printer took a galley of type and scrambled
+                                    it to make a type specimen book.
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div className="form-check font-size-16">
+                                  <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="transactionCheck03"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="transactionCheck03"
+                                  ></label>
+                                </div>
+                              </td>
+                              <td>
+                                <a
+                                  href="javascript: void(0);"
+                                  className="text-body fw-bold"
+                                >
+                                  #SK2541
+                                </a>{" "}
+                              </td>
+                              <td>Jamal Burnett</td>
+                              <td>07 Oct, 2019</td>
+                              <td>$380</td>
+                              <td>
+                                <span className="badge badge-pill badge-soft-danger font-size-11">
+                                  Chargeback
+                                </span>
+                              </td>
+                              <td>
+                                <i className="fab fa-cc-visa me-1"></i> Visa
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                >
+                                  View Details
+                                </button>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <div className="form-check font-size-16">
+                                  <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="transactionCheck04"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="transactionCheck04"
+                                  ></label>
+                                </div>
+                              </td>
+                              <td>
+                                <a
+                                  href="javascript: void(0);"
+                                  className="text-body fw-bold"
+                                >
+                                  #SK2542
+                                </a>{" "}
+                              </td>
+                              <td>Juan Mitchell</td>
+                              <td>06 Oct, 2019</td>
+                              <td>$384</td>
+                              <td>
+                                <span className="badge badge-pill badge-soft-success font-size-11">
+                                  Paid
+                                </span>
+                              </td>
+                              <td>
+                                <i className="fab fa-cc-paypal me-1"></i> Paypal
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                >
+                                  View Details
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div className="form-check font-size-16">
+                                  <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="transactionCheck05"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="transactionCheck05"
+                                  ></label>
+                                </div>
+                              </td>
+                              <td>
+                                <a
+                                  href="javascript: void(0);"
+                                  className="text-body fw-bold"
+                                >
+                                  #SK2543
+                                </a>{" "}
+                              </td>
+                              <td>Barry Dick</td>
+                              <td>05 Oct, 2019</td>
+                              <td>$412</td>
+                              <td>
+                                <span className="badge badge-pill badge-soft-success font-size-11">
+                                  Paid
+                                </span>
+                              </td>
+                              <td>
+                                <i className="fab fa-cc-mastercard me-1"></i>{" "}
+                                Mastercard
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                >
+                                  View Details
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div className="form-check font-size-16">
+                                  <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="transactionCheck06"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="transactionCheck06"
+                                  ></label>
+                                </div>
+                              </td>
+                              <td>
+                                <a
+                                  href="javascript: void(0);"
+                                  className="text-body fw-bold"
+                                >
+                                  #SK2544
+                                </a>{" "}
+                              </td>
+                              <td>Ronald Taylor</td>
+                              <td>04 Oct, 2019</td>
+                              <td>$404</td>
+                              <td>
+                                <span className="badge badge-pill badge-soft-warning font-size-11">
+                                  Refund
+                                </span>
+                              </td>
+                              <td>
+                                <i className="fab fa-cc-visa me-1"></i> Visa
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                >
+                                  View Details
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div className="form-check font-size-16">
+                                  <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="transactionCheck07"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="transactionCheck07"
+                                  ></label>
+                                </div>
+                              </td>
+                              <td>
+                                <a
+                                  href="javascript: void(0);"
+                                  className="text-body fw-bold"
+                                >
+                                  #SK2545
+                                </a>{" "}
+                              </td>
+                              <td>Jacob Hunter</td>
+                              <td>04 Oct, 2019</td>
+                              <td>$392</td>
+                              <td>
+                                <span className="badge badge-pill badge-soft-success font-size-11">
+                                  Paid
+                                </span>
+                              </td>
+                              <td>
+                                <i className="fab fa-cc-paypal me-1"></i> Paypal
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                 >
                                   View Details
                                 </button>
@@ -998,120 +1713,6 @@ const TestNavbar = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="modal fade transaction-detailModal"
-            tabIndex={-1}
-            role="dialog"
-            aria-labelledby="transaction-detailModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-dialog-centered" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="transaction-detailModalLabel">
-                    Order Details
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="modal-body">
-                  <p className="mb-2">
-                    Product id: <span className="text-primary">#SK2540</span>
-                  </p>
-                  <p className="mb-4">
-                    Billing Name:{" "}
-                    <span className="text-primary">Neal Matthews</span>
-                  </p>
-
-                  <div className="table-responsive">
-                    <table className="table align-middle table-nowrap">
-                      <thead>
-                        <tr>
-                          <th scope="col">Product</th>
-                          <th scope="col">Product Name</th>
-                          <th scope="col">Price</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">
-                            <div>
-                              <img
-                                src="assets/images/product/img-7.png"
-                                alt=""
-                                className="avatar-sm"
-                              />
-                            </div>
-                          </th>
-                          <td>
-                            <div>
-                              <h5 className="text-truncate font-size-14">
-                                Wireless Headphone (Black)
-                              </h5>
-                              <p className="text-muted mb-0">$ 225 x 1</p>
-                            </div>
-                          </td>
-                          <td>$ 255</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <div>
-                              <img
-                                src="assets/images/product/img-4.png"
-                                alt=""
-                                className="avatar-sm"
-                              />
-                            </div>
-                          </th>
-                          <td>
-                            <div>
-                              <h5 className="text-truncate font-size-14">
-                                Phone patterned cases
-                              </h5>
-                              <p className="text-muted mb-0">$ 145 x 1</p>
-                            </div>
-                          </td>
-                          <td>$ 145</td>
-                        </tr>
-                        <tr>
-                          <td colSpan={2}>
-                            <h6 className="m-0 text-right">Sub Total:</h6>
-                          </td>
-                          <td>$ 400</td>
-                        </tr>
-                        <tr>
-                          <td colSpan={2}>
-                            <h6 className="m-0 text-right">Shipping:</h6>
-                          </td>
-                          <td>Free</td>
-                        </tr>
-                        <tr>
-                          <td colSpan={2}>
-                            <h6 className="m-0 text-right">Total:</h6>
-                          </td>
-                          <td>$ 400</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
                 </div>
               </div>
             </div>

@@ -1,10 +1,12 @@
 import { lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import AuthRedirect from "../components/AuthRedirect";
+import AuthRedirect from "../components/common/AuthRedirect";
 
 const Login = lazy(() => import("../pages/auth/Login"));
 const Dashboard = lazy(() => import("../pages/demo/Dashboard"));
-const ProtectedRoute = lazy(() => import("../components/ProtectedRoute"));
+const ProtectedRoute = lazy(
+  () => import("../components/common/ProtectedRoute")
+);
 const UserManagement = lazy(() => import("../pages/UserManagement"));
 const AssignRoles = lazy(() => import("../pages/AssignRoles"));
 const RoleGroups = lazy(() => import("../pages/RoleGroups"));

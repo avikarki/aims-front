@@ -4,6 +4,7 @@ const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 export const loginSchema = yup.object().shape({
+  // role: yup.array().min(1, "Select at least one tag"),
   username: yup.string().required("Username is required!"),
   password: yup.string().required("Password is required!"),
   rememberMe: yup.boolean().optional().default(false),
@@ -11,6 +12,12 @@ export const loginSchema = yup.object().shape({
   //   .boolean()
   //   .oneOf([true], "You must accept the terms")
   //   .required("This field is required"),
+  // photo: yup
+  //   .mixed()
+  //   .required("File is required")
+  //   .test("fileType", "Only image files are allowed", (value) => {
+  //     return value && value.length > 0 && value[0].type.startsWith("image/");
+  //   }),
 });
 
 export const registerSchema = yup.object().shape({

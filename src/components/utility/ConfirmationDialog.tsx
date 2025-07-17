@@ -92,8 +92,8 @@
 
 import React, { useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { shortcutKeys } from "../shortcutKeys";
-import StyledShortcutKeyTitle from "./StyledShortcutKeyTitle";
+import { shortcutKeys } from "../../shortcutKeys";
+import StyledShortcutKeyTitle from "../StyledShortcutKeyTitle";
 
 interface ConfirmDialogProps {
   show: boolean;

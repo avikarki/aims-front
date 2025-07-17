@@ -1,6 +1,6 @@
 import { type JSX } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { useAppSelector } from "../app/hooks";
+import { useAppSelector } from "../../app/hooks";
 
 interface AuthRedirectProps {
   children: JSX.Element;

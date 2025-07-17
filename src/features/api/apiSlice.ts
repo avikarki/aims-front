@@ -173,6 +173,10 @@ export const authApiSlice = apiSlice.injectEndpoints({
     getCurrentAuthUser: builder.query<User, void>({
       query: () => "/auth/me",
     }),
+
+    getAllPosts: builder.query({
+      query: () => "/posts",
+    }),
   }),
 });
 
@@ -181,4 +185,5 @@ export const {
   useRefreshTokenMutation,
   useLogoutMutation,
   useGetCurrentAuthUserQuery,
+  useGetAllPostsQuery,
 } = authApiSlice;

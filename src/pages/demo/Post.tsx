@@ -28,8 +28,8 @@ import { Form } from "react-bootstrap";
 import { useShortcuts } from "../../hooks/useShortcutKeys";
 import { shortcutKeys } from "../../shortcutKeys";
 import StyledShortcutKeyTitle from "../../components/StyledShortcutKeyTitle";
-import { useGetPostsQuery } from "../../features/post/postsApi";
 import PostModal from "./PostModal";
+import { useGetAllPostsQuery } from "../../features/api/apiSlice";
 
 interface TablePaginationActionsProps {
   count: number;
@@ -131,11 +131,13 @@ const Post = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [postEditId, setPostEditId] = useState<number | null>(null);
 
-  const { data: posts = [] } = useGetPostsQuery();
+  const { data: posts } = useGetAllPostsQuery("");
+
+  console.log("Posts:", posts);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - posts.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - posts?.posts?.length) : 0;
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement> | null,
@@ -252,7 +254,7 @@ const Post = () => {
           />
         </Button>
       </Stack>
-      {posts?.length > 0 ? (
+      {posts?.posts?.length > 0 ? (
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -276,12 +278,12 @@ const Post = () => {
             </TableHead>
             <TableBody>
               {(rowsPerPage > 0
-                ? posts.slice(
+                ? posts?.posts?.slice(
                     page * rowsPerPage,
                     page * rowsPerPage + rowsPerPage
                   )
-                : posts
-              ).map((post, index) => (
+                : posts?.posts
+              ).map((post: any, index: any) => (
                 <TableRow
                   aria-selected={postEditId === post.id}
                   key={index}
@@ -363,7 +365,7 @@ const Post = () => {
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
                   colSpan={5}
-                  count={posts?.length}
+                  count={posts?.posts?.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   slotProps={{

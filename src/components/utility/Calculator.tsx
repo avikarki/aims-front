@@ -182,7 +182,7 @@
 import { useState } from "react";
 import { evaluate } from "mathjs";
 import { Button, Form } from "react-bootstrap";
-import { useCalculatorShortcutKeys } from "../hooks/useShortcutKeys";
+import { useCalculatorShortcutKeys } from "../../hooks/useShortcutKeys";
 
 interface CalculatorProps {
   setField: (field: any) => void;

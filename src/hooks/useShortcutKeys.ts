@@ -45,6 +45,8 @@ export const useShortcuts = (
       // Check if modal is open
       const isModalOpen = !!document.querySelector(".modal.show");
 
+      console.log("Is modal open:", isModalOpen);
+
       // Find matching shortcut
       const matchedShortcut = shortcuts.find(
         (shortcut) =>

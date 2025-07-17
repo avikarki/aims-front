@@ -1,4 +1,4 @@
-import PopupModal from "../../components/PopupModal";
+import PopupModal from "../../components/utility/PopupModal";
 
 type TestModalProps = {
   isModalOpen: boolean;
