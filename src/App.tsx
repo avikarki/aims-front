@@ -5,6 +5,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import type { FallbackProps } from "react-error-boundary";
 import { ToastContainer } from "react-toastify";
 import Spinner from "./components/utility/Spinner";
+import "./App.css";
 
 function RootErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (

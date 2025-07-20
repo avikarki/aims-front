@@ -6,13 +6,13 @@ const Search = ({ open }: { open: boolean }) => {
   return (
     <AnimatedFadeSlide
       isVisible={open}
-      className="p-4 rounded-md absolute right-0 -bottom-16 bg-white inset-shadow-2xs shadow-2xl"
+      className="p-4 rounded-md absolute right-0 -bottom-16 bg-white inset-shadow-2xs shadow-2xl w-full sm:w-fit"
     >
-      <div className="flex ">
+      <div className="flex w-full">
         <input
           type="text"
           placeholder="Search ..."
-          className="border border-gray-300 px-3 py-1.5 rounded-l-md w-70 focus:outline-sky-600"
+          className="border border-gray-300 px-3 py-1.5 rounded-l-md w-full sm:w-70 focus:outline-sky-600"
         />
         <ReusableButton className="rounded-l-none">
           <FaSearch size={12} />

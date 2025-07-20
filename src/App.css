@@ -1,0 +1,28 @@
+/* Hide scrollbar by default */
+.hide-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.hide-scrollbar:hover,
+.hide-scrollbar:active {
+  scrollbar-color: #e3e3e3 transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 0.25rem;
+  transition: background-color 7s ease;
+}
+
+/* Show scrollbar on hover or when scrolling */
+.hide-scrollbar:hover::-webkit-scrollbar-thumb,
+.hide-scrollbar:active::-webkit-scrollbar-thumb {
+  background-color: #e3e3e3;
+}

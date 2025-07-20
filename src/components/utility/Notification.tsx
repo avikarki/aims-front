@@ -47,7 +47,7 @@ const Notification = ({ open }: { open: boolean }) => {
   return (
     <AnimatedFadeSlide
       isVisible={open}
-      className="rounded-md absolute right-0 top-17.5 bg-white inset-shadow-2xs shadow-2xl w-85"
+      className="rounded-md absolute right-0 top-17.5 bg-white inset-shadow-2xs shadow-2xl w-full sm:w-85"
     >
       <div className="flex items-center justify-between px-4 pt-4">
         <h6>Notifications</h6>
@@ -55,7 +55,7 @@ const Notification = ({ open }: { open: boolean }) => {
           View All
         </ReusableButton>
       </div>
-      <div className="flex flex-col py-4 overflow-y-scroll h-50">
+      <div className="flex flex-col py-4 overflow-auto hide-scrollbar h-60">
         {notifications.map((item, index) => (
           <div
             key={index}
@@ -68,7 +68,7 @@ const Notification = ({ open }: { open: boolean }) => {
                 <img
                   src={item.image}
                   alt=""
-                  className="rounded-full w-9 h-9 object-cover"
+                  className="rounded-full w-full h-full object-cover"
                 />
               ) : (
                 <item.icon size={16} />

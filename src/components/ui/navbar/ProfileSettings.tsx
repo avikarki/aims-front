@@ -8,7 +8,7 @@ const ProfileSettings = ({ open }: { open: boolean }) => {
   return (
     <AnimatedFadeSlide
       isVisible={open}
-      className="rounded-md absolute right-0 top-17.5 bg-white inset-shadow-2xs shadow-2xl"
+      className="rounded-md absolute right-0 sm:right-0.5 top-17.5 bg-white inset-shadow-2xs shadow-2xl w-full sm:w-fit"
     >
       <div className="flex flex-col py-3">
         <div className="flex items-center gap-3 px-7 py-2 cursor-pointer transition duration-300 ease-in-out hover:bg-icon-hover">

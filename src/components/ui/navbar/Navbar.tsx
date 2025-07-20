@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
             <FaBars size={16} />
           </button>
           <div className="flex justify-center items-center h-full">
-            <div className="relative h-full" ref={searchRef}>
+            <div className="sm:relative h-full" ref={searchRef}>
               <ReusableButton
                 variant="icon"
                 className={`cursor-pointer h-full px-3 rounded-none ${
@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
               {/* Search Popup */}
               <Search open={openSearch} />
             </div>
-            <div className="relative h-full" ref={notificationRef}>
+            <div className="sm:relative h-full" ref={notificationRef}>
               <ReusableButton
                 variant="icon"
                 className={`cursor-pointer h-full px-3 rounded-none ${
@@ -101,14 +101,14 @@ const Navbar: React.FC = () => {
                   <FaRegBell size={20} className="text-text" />
                 </motion.div>
               </ReusableButton>
-              <div className="absolute top-4 right-2 bg-red-400 rounded-full w-4 h-4 flex items-center justify-center text-white text-[11px] font-bold">
+              <div className="absolute top-4 right-20 sm:right-2 bg-red-400 rounded-full w-4 h-4 flex items-center justify-center text-white text-[11px] font-bold">
                 4
               </div>
 
               {/* Notifications popup */}
               <Notification open={openNotification} />
             </div>
-            <div className="relative h-full" ref={settingRef}>
+            <div className="sm:relative h-full" ref={settingRef}>
               <ReusableButton
                 variant="icon"
                 className={`flex gap-2 cursor-pointer h-full px-5 rounded-none ${
@@ -125,7 +125,7 @@ const Navbar: React.FC = () => {
                     style={{ borderRadius: "50%" }}
                   />
                 </div>
-                <div className="flex items-center gap-2 text-text">
+                <div className="hidden sm:flex items-center gap-2 text-text">
                   <span>Samir</span>
                   <FaChevronDown size={10} />
                 </div>
