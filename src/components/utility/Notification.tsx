@@ -7,6 +7,7 @@ import {
 import ReusableButton from "../common/ReusableButton";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import AnimatedFadeSlide from "./AnimatedFadeSlide";
+import Scrollbar from "./Scrollbar";
 
 const notifications = [
   {
@@ -55,7 +56,8 @@ const Notification = ({ open }: { open: boolean }) => {
           View All
         </ReusableButton>
       </div>
-      <div className="flex flex-col py-4 overflow-auto hide-scrollbar h-60">
+      {/* <div className="flex flex-col py-4 overflow-auto hide-scrollbar h-60"> */}
+      <Scrollbar className="max-h-60">
         {notifications.map((item, index) => (
           <div
             key={index}
@@ -84,7 +86,8 @@ const Notification = ({ open }: { open: boolean }) => {
             </div>
           </div>
         ))}
-      </div>
+      </Scrollbar>
+      {/* </div> */}
       <hr className="text-gray-100" />
       <div className="flex">
         <ReusableButton
